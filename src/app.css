@@ -1,0 +1,393 @@
+/* ==========================================================================
+   MONOLITH ATELIER — Design System
+   Dark Architectural / Automotive Luxury. Concreto escuro + luz linear quente.
+   Tipografia de alta-costura: serifa de alto contraste (Cormorant Garamond) nos títulos,
+   sans geométrica arejada (Manrope) no texto e rótulos espaçados, mono (JetBrains) só em telemetria.
+   Regras: sem gradientes roxos/azuis, sem sombras coloridas, linhas de 1px,
+   cantos precisos (2px / 4px), superfícies com backdrop-filter: blur(18px).
+   ========================================================================== */
+
+:root {
+  /* Cor ------------------------------------------------------------------ */
+  --bg-obsidian: #0a0a0c;
+  --surface-carbon: rgba(16, 16, 20, 0.72);
+  --surface-elevated: rgba(24, 24, 30, 0.85);
+  --text-ivory: #f4f1ea;
+  --text-soft: rgba(244, 241, 234, 0.76);
+  --text-muted: #9e9b95;
+  --text-faint: rgba(244, 241, 234, 0.42);
+  --accent-amber: #d4a359;
+  --accent-amber-glow: rgba(212, 163, 89, 0.18);
+  --border-hairline: rgba(244, 241, 234, 0.12);
+  --border-accent: rgba(212, 163, 89, 0.42);
+
+  /* Tipografia ------------------------------------------------------------ */
+  --font-display: 'Cormorant Garamond', 'Cormorant', 'Hoefler Text', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Títulos limitados também pela altura: cabem em celular deitado e notebooks baixos. */
+  --fs-hero: clamp(3rem, min(6vw, 11.5vh), 6.1rem);
+  --fs-h2: clamp(2.6rem, min(5vw, 10.5vh), 5.4rem);
+  --fs-h3: clamp(2.1rem, 2.9vw, 3rem);
+  --fs-lede: clamp(0.98rem, 0.28vw + 0.92rem, 1.12rem);
+  --fs-body: clamp(0.92rem, 0.15vw + 0.88rem, 1rem);
+  --fs-small: 0.84rem;
+  --fs-label: 0.66rem;
+  --fs-mono: clamp(0.64rem, 0.08vw + 0.62rem, 0.7rem);
+  --fs-number: clamp(2.4rem, 3vw, 3.1rem);
+
+  --lh-hero: 0.96;
+  --lh-tight: 1;
+  --lh-body: 1.72;
+  --ls-hero: -0.015em;
+  --ls-display: -0.01em;
+  --ls-label: 0.28em;
+  --ls-mono: 0.12em;
+
+  /* Forma ----------------------------------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --hairline: 1px solid var(--border-hairline);
+  --hairline-accent: 1px solid var(--border-accent);
+  --blur: 18px;
+
+  /* Espaço ---------------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --gutter: clamp(1.25rem, 4.2vw, 4.5rem);
+  --nav-h: 64px;
+  --nav-top: max(env(safe-area-inset-top), clamp(0.75rem, 1.6vw, 1.25rem));
+  --editorial-max: 540px;
+
+  /* Movimento ------------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --dur-fast: 220ms;
+  --dur-base: 480ms;
+  --dur-reveal: 1200ms;
+
+  /* Camadas --------------------------------------------------------------- */
+  --z-canvas: 0;
+  --z-shade: 1;
+  --z-overlay: 2;
+  --z-hud: 5;
+  --z-nav: 10;
+  --z-grain: 50;
+  --z-preloader: 100;
+
+  color-scheme: dark;
+}
+
+/* Base ------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg-obsidian);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(244, 241, 234, 0.18) transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-obsidian);
+  color: var(--text-ivory);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  font-feature-settings: 'kern', 'liga', 'dlig';
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+img,
+canvas {
+  display: block;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+::selection {
+  background: var(--accent-amber-glow);
+  color: var(--text-ivory);
+}
+
+:focus-visible {
+  outline: 1px solid var(--accent-amber);
+  outline-offset: 3px;
+}
+
+/* Grão de filme — textura sutil sobre tudo (estático, sem custo de animação) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Utilitários ------------------------------------------------------------ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Rótulo de luxo: sans espaçada em caixa-alta */
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* Telemetria / dados */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 300;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--accent-amber);
+}
+
+.tag::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent-amber);
+  flex: none;
+}
+
+/* Palavra de destaque nos títulos: itálico de alta-costura em âmbar */
+.accent {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent-amber);
+}
+
+.surface {
+  background: var(--surface-carbon);
+  border: var(--hairline);
+  border-radius: var(--radius-sm);
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+}
+
+.surface--elevated {
+  background: var(--surface-elevated);
+}
+
+/* Botões ----------------------------------------------------------------- */
+.btn {
+  --btn-h: 48px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  height: var(--btn-h);
+  padding: 0 1.5rem;
+  border: var(--hairline);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text-ivory);
+  background: transparent;
+  overflow: hidden;
+  isolation: isolate;
+  touch-action: manipulation;
+  user-select: none;
+  transition:
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent-amber);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.btn__arrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.2em;
+  letter-spacing: 0;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.btn:focus-visible::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.btn:focus-visible {
+  color: var(--bg-obsidian);
+  border-color: var(--accent-amber);
+}
+
+/* Hover só em dispositivos com mouse: no toque o estado não "gruda" após o tap. */
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  .btn:hover {
+    color: var(--bg-obsidian);
+    border-color: var(--accent-amber);
+  }
+
+  .btn:hover .btn__arrow {
+    transform: translateX(4px);
+  }
+
+  .btn--primary:hover {
+    border-color: var(--text-ivory);
+  }
+}
+
+.btn:active {
+  transform: scale(0.985);
+}
+
+.btn--accent {
+  border-color: var(--border-accent);
+  background: var(--accent-amber-glow);
+}
+
+.btn--primary {
+  color: var(--bg-obsidian);
+  background: var(--accent-amber);
+  border-color: var(--accent-amber);
+}
+
+.btn--primary::before {
+  background: var(--text-ivory);
+}
+
+.btn--primary:focus-visible {
+  border-color: var(--text-ivory);
+}
+
+.btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  color: var(--text-muted);
+  background: transparent;
+  border-color: var(--border-hairline);
+}
+
+.btn[aria-disabled='true']::before {
+  display: none;
+}
+
+/* Movimento reduzido ----------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
