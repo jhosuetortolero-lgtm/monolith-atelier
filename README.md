@@ -18,12 +18,12 @@ Quatro vídeos viram uma narrativa contínua em scroll — renderizada frame a f
 
 <br />
 
-![Svelte](https://img.shields.io/badge/Svelte_5-0A0A0C?style=for-the-badge&logo=svelte&logoColor=D4A359)
-![TypeScript](https://img.shields.io/badge/TypeScript-0A0A0C?style=for-the-badge&logo=typescript&logoColor=D4A359)
-![Vite](https://img.shields.io/badge/Vite_8-0A0A0C?style=for-the-badge&logo=vite&logoColor=D4A359)
-![GSAP](https://img.shields.io/badge/GSAP_ScrollTrigger-0A0A0C?style=for-the-badge&logo=greensock&logoColor=D4A359)
-![Lenis](https://img.shields.io/badge/Lenis-0A0A0C?style=for-the-badge&logoColor=D4A359)
-![FFmpeg](https://img.shields.io/badge/FFmpeg-0A0A0C?style=for-the-badge&logo=ffmpeg&logoColor=D4A359)
+![Svelte 5](docs/badges/svelte.svg)
+![TypeScript](docs/badges/typescript.svg)
+![Vite 8](docs/badges/vite.svg)
+![GSAP ScrollTrigger](docs/badges/gsap.svg)
+![Lenis](docs/badges/lenis.svg)
+![FFmpeg](docs/badges/ffmpeg.svg)
 
 [![Deploy](https://github.com/jhosuetortolero-lgtm/monolith-atelier/actions/workflows/deploy.yml/badge.svg)](https://github.com/jhosuetortolero-lgtm/monolith-atelier/actions/workflows/deploy.yml)
 
@@ -169,10 +169,10 @@ Dark architectural · automotive luxury — concreto escuro e luz linear quente.
 
 | Token | Cor | Uso |
 | :-- | :-- | :-- |
-| `--bg-obsidian` | ![#0A0A0C](https://img.shields.io/badge/%230A0A0C-0A0A0C?style=flat-square) | Fundo |
-| `--text-ivory` | ![#F4F1EA](https://img.shields.io/badge/%23F4F1EA-F4F1EA?style=flat-square) | Texto principal |
-| `--text-muted` | ![#9E9B95](https://img.shields.io/badge/%239E9B95-9E9B95?style=flat-square) | Texto secundário |
-| `--accent-amber` | ![#D4A359](https://img.shields.io/badge/%23D4A359-D4A359?style=flat-square) | Destaques, CTAs, itálicos |
+| `--bg-obsidian` | ![#0A0A0C](docs/badges/color-0A0A0C.svg) | Fundo |
+| `--text-ivory` | ![#F4F1EA](docs/badges/color-F4F1EA.svg) | Texto principal |
+| `--text-muted` | ![#9E9B95](docs/badges/color-9E9B95.svg) | Texto secundário |
+| `--accent-amber` | ![#D4A359](docs/badges/color-D4A359.svg) | Destaques, CTAs, itálicos |
 
 - **Tipografia** — *Cormorant Garamond* nos títulos (com uma palavra em itálico âmbar), *Manrope* no texto e nos rótulos espaçados, *JetBrains Mono* só na telemetria.
 - **Forma** — linhas de 1px, cantos de 2–4px, superfícies com `backdrop-filter: blur(18px)`, grão de filme sutil.
